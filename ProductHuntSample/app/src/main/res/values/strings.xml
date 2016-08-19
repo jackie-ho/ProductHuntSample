@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProductHuntSample</string>
+    <string name="accept_header">Accept</string>
+    <string name="content_header">Content-Type</string>
+    <string name="auth_header">Authorization</string>
+    <string name="host_header">Host</string>
+    <string name="auth_bearer">Bearer </string>
+    <string name="error_text">Error loading data. Check your network connection.</string>
 </resources>

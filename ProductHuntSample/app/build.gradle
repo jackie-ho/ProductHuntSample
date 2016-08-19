@@ -1,15 +1,23 @@
 apply plugin: 'com.android.application'
 
+def cfg = rootProject.ext.configuration
+def libs = rootProject.ext.libraries;
+
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.1"
+    compileSdkVersion cfg.compileVersion
+    buildToolsVersion cfg.buildToolsVersion
 
     defaultConfig {
-        applicationId "ho.jackie.producthuntsample"
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        applicationId       cfg.package
+        minSdkVersion       cfg.minSdk
+        targetSdkVersion    cfg.targetSdk
+        versionCode         cfg.version_code
+        versionName         cfg.version_name
+
+        buildConfigField "String", "PRODUCT_HUNT_API_KEY", "\"${product_hunt_key}\""
+        buildConfigField "String", "PRODUCT_HUNT_SECRET", "\"${product_hunt_secret}\""
+        buildConfigField "String", "PRODUCT_HUNT_TOKEN", "\"${access_token}\""
+
     }
     buildTypes {
         release {
@@ -20,7 +28,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile "com.android.support:appcompat-v7:${libs.support}"
+    compile "io.reactivex:rxjava:${libs.rxjava}"
+    compile "io.reactivex:rxandroid:${libs.rxandroid}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${libs.rxadapter}"
+    compile "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+    compile "com.squareup.retrofit2:converter-gson:${libs.gson}"
+    compile "com.squareup.picasso:picasso:${libs.picasso}"
+    compile "com.android.support:recyclerview-v7:${libs.recycler}"
+    compile "com.squareup.okhttp3:logging-interceptor:${libs.logger}"
 }

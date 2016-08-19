@@ -9,8 +9,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".views.TodayPostActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/today_post_recyclerlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
     <TextView
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerInParent="true"
+        android:text="@string/error_text"
+        android:id="@+id/error_text"/>
 </RelativeLayout>
